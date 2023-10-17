@@ -1,6 +1,6 @@
 # OpenAI function Boilerplate
 
-<p><center><small><b>English | <a href="README-zh_CN.md">中文</a></b></small></center></p>
+<p style="text-align:center"><small><b>English | <a href="README-zh_CN.md">中文</a></b></small></p>
 
 A minimally viable framework for demonstrating how to create a function that can be invoked by OpenAI's function calling mechanism. It is written in NodeJS and deployed on Vercel, and tested with ConsoleX.ai for function invocation.
 
