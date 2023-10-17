@@ -1,58 +1,77 @@
 # OpenAI function Boilerplate
 
+English Version｜[中文版](README-zh_CN.md)
+
 A minimum framework for creating a function to be invoked by OpenAI function calling mechanisum, using NodeJS and hosted on Vercel.
 
-## Quick start
+A minimally viable framework for demonstrating how to create a function that can be invoked by OpenAI's function calling mechanism. It is written in NodeJS and deployed on Vercel, and tested with ConsoleX.ai for function invocation.
 
-First, clone the project to your local enviornment:
-首先，克隆代码到本地
+We will use an example of creating a function to answer questions about the 2022 FIFA World Cup (since the training data cutoff for ChatGPT models is currently January 2022, calling a function is needed to give correct answers). With simple steps, you can complete the creation, deployment and testing of the function.
+
+## Create and Deploy the Function
+
+First, clone the code locally:
 ```
 git clone https://github.com/quentinzhang/OpenAI-function-boilerplate.git
 ```
 
-Next, enter your project directory, and create a .env file using the sample file
-接下来，进入你的项目目录，并通过示例文件创建一个.env文件
+Next, enter your project directory
 ```
 cd OpenAI-function-boilerplate
-cp .env.example .env
 ```
 
-if you have not installed Vercel, install it globally first:
-然后，全局安装vercel，并初始化一个新项目，如果是第一次使用则会提示你创建用户
+If you have not installed Vercel, first install it globally:
 ```
 npm i -g vercel
 ```
 
 Then initialize a Vercel project in the root directory of the project:
-下一步，初始化一个Vercel项目
 ```
 vercel
 ```
-Follow the guided steps to complete the setup.
-按照提示一步步完成设置即可。
+Finally, deploy the project to production:
 
 ```
 vercel --prod
 ```
+After the operation is complete, your production domain name should be displayed in the terminal:
+```https://<your-vercel-domain>```
 
-到这里，你已经创建并部署了一个可供调用的简单函数。
-
-### Test the function
-
-There are two functions pre-created.
-
-Enter Vercel dashboard, and find the project that you just created, copy your project path, and paste it in the "function base path" input box on ConsoleX, turn on the 'Enable OpenAI function calling' switch, and now you can try invoking your function by API or using ConsoleX.ai
-
-
-
-You can ask the OpenAI's GPT model a question related to local weather:
+At this point, you have completed the serverless function deployment process. Your function invocation path is:
 ```
-What's the weather like in London today?
+https://<your-vercel-domain>/api/fifa_worldcup_2022_info
 ```
-In most cases, OpenAI's GPT model will call the weather function getCurrentWeather to answer your question. If the function call works, a green message box will appear under the AI's answer. Clicking on the message box will open a pop-up window with detailed information about the function call process.
 
-Once local debugging is successful, you can release the function to the internet via:
+Since this function does not require any parameters, you can see the JSON information returned by the function by entering it in a browser.
+
+The description of the function is contained in the ```function_description.json``` file, which can be passed as a parameter defining the function when invoking OpenAI's API.
+
+## Testing Function Invocation
+Debugging function invocation can be cumbersome as it involves several intermediate steps. Below is a shortcut to test function invocation with ConsoleX.ai.
+
+Open the ```function_description.json``` file, copy the description information about the fifa_worldcup_2022_info function, and paste it into ConsoleX.ai's function description configuration and click the Save button.
+
+Then, copy your production domain name, append ```/api``` to it: ```https://<your-vercel-domain>/api```. Fill it in as the base path configuration on ConsoleX.ai's homepage.
+
+Next, turn on the switch to enable OpenAI function calling, and ask GPT a simple question about the 2022 World Cup:
+
 ```
-vercel --prod
+Which team won the 2022 FIFA World Cup?
 ```
-After successful release, you need to replace the function call path in the ConsoleOne Workbench with the domain name of the Vercel production environment and set the environment variables used in the .env file in the environment variable settings of the Vercel project. You can then call the function more conveniently without relying on the local environment.
+
+You should now be able to see the correct answer returned by OpenAI's API through function invocation.
+
+## Develop New Functions
+
+You can develop new functions in a similar way - simply replace the function description information in ```function_description.json``` with your own, and write the function implementation code under the api directory in the corresponding file.
+
+The example also contains implementation code for a ```get_current_weather``` function. You can refer to it to implement a function that needs to call third-party RESTful API interfaces.
+
+Since an API Key from openweathermap.org is needed to get weather data, you need to add an environment variable named OPEN_WEATHER_MAP_API_KEY in Vercel's project settings, and fill in the API Key you applied from openweathermap as the value.
+
+During local development, you can copy the .env.example file to .env, and fill in your API Key in it. This allows you to use it when debugging locally.
+```bash
+cp .env.example .env
+```
+
+If you want to encrypt the function you are developing, you can set the value of the environment variable ```EXPECTED_API_KEY``` to a random string, and then pass that string in the authorization bearer token in the header when calling the function. This ensures that only those who know that string can invoke your function.
