@@ -1,6 +1,8 @@
 # OpenAI function Boilerplate
 
-[English Version](README.md)｜中文版
+<!-- [English Version](README.md)｜中文版 -->
+<p><center><small><b><a href="README-zh_CN.md">English</a> | 中文</b></small></center></p>
+
 
 一个用于演示如何创建一个可以被OpenAI函数调用机制调用的函数的最小化开发框架，使用NodeJS编写并部署到Vercel上，并使用ConsoleX.ai测试函数调用。
 

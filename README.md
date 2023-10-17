@@ -1,8 +1,6 @@
 # OpenAI function Boilerplate
 
-English Version｜[中文版](README-zh_CN.md)
-
-A minimum framework for creating a function to be invoked by OpenAI function calling mechanisum, using NodeJS and hosted on Vercel.
+<p><center><small><b>English | <a href="README-zh_CN.md">中文</a></b></small></center></p>
 
 A minimally viable framework for demonstrating how to create a function that can be invoked by OpenAI's function calling mechanism. It is written in NodeJS and deployed on Vercel, and tested with ConsoleX.ai for function invocation.
 
@@ -51,7 +49,7 @@ Debugging function invocation can be cumbersome as it involves several intermedi
 
 Open the ```function_description.json``` file, copy the description information about the fifa_worldcup_2022_info function, and paste it into ConsoleX.ai's function description configuration and click the Save button.
 
-Then, copy your production domain name, append ```/api``` to it: ```https://<your-vercel-domain>/api```. Fill it in as the base path configuration on ConsoleX.ai's homepage.
+Then, copy your production domain name, append ```/api``` to it as: ```https://<your-vercel-domain>/api```. Fill it in as the base path configuration on ConsoleX.ai's homepage.
 
 Next, turn on the switch to enable OpenAI function calling, and ask GPT a simple question about the 2022 World Cup:
 
@@ -69,8 +67,8 @@ The example also contains implementation code for a ```get_current_weather``` fu
 
 Since an API Key from openweathermap.org is needed to get weather data, you need to add an environment variable named OPEN_WEATHER_MAP_API_KEY in Vercel's project settings, and fill in the API Key you applied from openweathermap as the value.
 
-During local development, you can copy the .env.example file to .env, and fill in your API Key in it. This allows you to use it when debugging locally.
-```bash
+During local development, you can copy the .env.example file to .env, and fill in your API Keys in it. This allows you to use it when debugging locally.
+```
 cp .env.example .env
 ```
 
