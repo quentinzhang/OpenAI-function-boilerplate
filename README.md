@@ -2,7 +2,7 @@
 
 <p align="center"><small><b>English | <a href="README-zh_CN.md">中文</a></b></small></p>
 
-A minimally viable framework for demonstrating how to create a function that can be invoked by OpenAI's function calling mechanism. It is written in NodeJS and deployed on Vercel, and tested with ConsoleX.ai for function invocation.
+A minimally framework for creating a function that can be invoked by OpenAI's function calling mechanism, written in NodeJS and deployed on Vercel, tested on ConsoleX.ai for function invocation.
 
 We will use an example of creating a function to answer questions about the 2022 FIFA World Cup (since the training data cutoff for ChatGPT models is currently January 2022, calling a function is needed to give correct answers). With simple steps, you can complete the creation, deployment and testing of the function.
 

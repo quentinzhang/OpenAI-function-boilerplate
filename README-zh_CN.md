@@ -4,7 +4,7 @@
 <p align="center"><small><b><a href="README.md">English</a> | 中文</b></small></p>
 
 
-一个用于演示如何创建一个可以被OpenAI函数调用机制调用的函数的最小化开发框架，使用NodeJS编写并部署到Vercel上，并使用ConsoleX.ai测试函数调用。
+创建一个可以被OpenAI函数调用机制调用的函数的最小化开发框架，使用NodeJS编写并部署到Vercel上，并使用ConsoleX.ai测试函数调用。
 
 我们将以创建一个用于解答关于2022年世界杯相关问题的函数为例（由于ChatGPT模型训练数据目前的截止时间为2022年1月，所以需要调用函数才能给出正确的回答），通过简单的步骤，即可完成函数的创建、部署和测试。
 
