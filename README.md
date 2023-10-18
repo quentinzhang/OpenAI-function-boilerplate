@@ -2,7 +2,7 @@
 
 <p align="center"><small><b>English | <a href="README-zh_CN.md">中文</a></b></small></p>
 
-A minimally framework for creating a function that can be invoked by OpenAI's function calling mechanism, written in NodeJS and deployed on Vercel, tested on ConsoleX.ai for function invocation.
+A minimally framework for creating a function that can be invoked by OpenAI's function calling mechanism, written in NodeJS and deployed on Vercel, tested by [ConsoleX.ai](https://consolex.ai) for function invocation.
 
 We will use an example of creating a function to answer questions about the 2022 FIFA World Cup (since the training data cutoff for ChatGPT models is currently January 2022, calling a function is needed to give correct answers). With simple steps, you can complete the creation, deployment and testing of the function.
 
@@ -45,7 +45,7 @@ Since this function does not require any parameters, you can see the JSON inform
 The description of the function is contained in the ```function_description.json``` file, which can be passed as a parameter defining the function when invoking OpenAI's API.
 
 ## Testing Function Invocation
-Debugging function invocation can be cumbersome as it involves several intermediate steps. Below is a shortcut to test function invocation with ConsoleX.ai.
+Debugging function invocation can be cumbersome as it involves several intermediate steps. Below is a shortcut to test function invocation with [ConsoleX.ai](https://consolex.ai).
 
 Open the ```function_description.json``` file, copy the description information about the fifa_worldcup_2022_info function, and paste it into ConsoleX.ai's function description configuration and click the Save button.
 
@@ -63,9 +63,11 @@ You should now be able to see the correct answer returned by OpenAI's API throug
 
 You can develop new functions in a similar way - simply replace the function description information in ```function_description.json``` with your own, and write the function implementation code under the api directory in the corresponding file.
 
-The example also contains implementation code for a ```get_current_weather``` function. You can refer to it to implement a function that needs to call third-party RESTful API interfaces.
+You can also refer to the [Vercel documentation](https://vercel.com/docs/functions/serverless-functions) for more information on how to develop serverless functions.
 
-Since an API Key from openweathermap.org is needed to get weather data, you need to add an environment variable named OPEN_WEATHER_MAP_API_KEY in Vercel's project settings, and fill in the API Key you applied from openweathermap as the value.
+The example also contains implementation code for a ```get_current_weather``` function. You can refer to it to implement a function that needs to call third-party RESTful API interfaces. 
+
+Install the axios dependency first by running ```npm install```, and add an environment variable named OPEN_WEATHER_MAP_API_KEY in Vercel's project settings, and fill in the API Key you applied from [openweathermap](https://openweathermap.org/) as the value.
 
 During local development, you can copy the .env.example file to .env, and fill in your API Keys in it. This allows you to use it when debugging locally.
 ```
